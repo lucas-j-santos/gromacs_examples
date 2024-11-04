@@ -1,0 +1,42 @@
+; Run control
+integrator          	= md
+nsteps              	= 2000000
+dt                  	= 0.001
+
+; Output control
+nstxout           	= 1000
+nstenergy           	= 200
+
+; Neighbor searching
+cutoff-scheme       	= Verlet
+nstlist             	= 10
+pbc                 	= xyz
+rlist               	= 1.4
+
+; Electrostatics
+coulombtype         	= Cut-off
+rcoulomb            	= 1.4
+
+; Van der Waals
+vdwtype             	= Cut-off
+rvdw                	= 1.4
+DispCorr            	= EnerPres
+
+; Temperature coupling
+tcoupl              	= v-rescale
+tc-grps             	= System
+tau_t               	= 0.1
+ref_t               	= 300
+
+; Pressure coupling
+pcoupl              	= Parrinello-Rahman
+pcoupltype          	= isotropic
+tau-p               	= 10
+compressibility     	= 4.5e-5
+ref-p               	= 130
+refcoord-scaling    	= com
+
+; Velocity generation
+gen_vel			= yes
+gen-temp	    	= 300.0
+gen-seed            	= -1
